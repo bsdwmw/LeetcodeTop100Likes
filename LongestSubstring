@@ -1,0 +1,18 @@
+'''Problem Description: https://leetcode.com/problems/longest-substring-without-repeating-characters/'''
+
+def lengthOfLongestSubstring(s):
+	res, start = 0, 0 # record the max length of no-repeating substring and the first index to calculate the substring 
+	while start < len(s):
+		testRep = set() # to test whether the element has already in this substring
+		index = start # iterate through the elements from start onwards
+		while index < len(s):
+			if s[index] not in testRep: # prove that no repetitions by now
+				testRep.add(s[index])
+				index += 1
+			else:
+				break
+		res = max(res, index - start) # update the max length
+		start += 1 # begin from next element
+	return res
+
+	
